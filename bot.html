@@ -1,0 +1,181 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FutureAI | Logic Science Masterclass</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #000428, #004e92);
+      color: white;
+    }
+    header {
+      text-align: center;
+      padding: 20px;
+    }
+    .logo {
+      width: 180px;
+      height: auto;
+      display: block;
+      margin: 10px auto;
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    h1 {
+      color: #22c55e;
+    }
+    .description {
+      text-align: center;
+      font-weight: bold;
+      color: #f1f1f1;
+    }
+    .category-buttons, .chat-container {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+    }
+    .category-button, .suggestion-button {
+      background-color: #22c55e;
+      color: #000;
+      border: none;
+      padding: 12px;
+      border-radius: 10px;
+      margin: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .category-button:hover, .suggestion-button:hover {
+      background-color: #16a34a;
+    }
+    .chat-box {
+      max-height: 400px;
+      overflow-y: auto;
+      margin-top: 15px;
+    }
+    .chat-message {
+      margin: 10px;
+      padding: 10px;
+      border-radius: 10px;
+    }
+    .user-message {
+      background-color: #1e293b;
+      text-align: right;
+    }
+    .bot-message {
+      background-color: #22c55e;
+      color: black;
+      text-align: left;
+    }
+    .nav-bar {
+      display: flex;
+      justify-content: center;
+      background-color: #0f172a;
+      padding: 15px;
+    }
+    .nav-bar a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav-bar">
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="material.html"><i class="fas fa-book"></i> Material</a>
+    <a href="futureai.html"><i class="fas fa-brain"></i> FutureAI</a>
+  </nav>  <header>
+    <img src="FutureAI.png" alt="FutureAI Logo" class="logo">
+    <h1>FutureAI Bot</h1>
+    <p class="description">Explore historical topics in Mathematics, Physics, and Life Sciences.</p>
+  </header>  <div class="category-buttons" id="subjectButtons">
+    <button class="category-button" onclick="loadCategory('Math')">📐 Mathematics</button>
+    <button class="category-button" onclick="loadCategory('Physics')">🧪 Physical Sciences</button>
+    <button class="category-button" onclick="loadCategory('Life')">🧬 Life Sciences</button>
+  </div>  <div class="chat-container">
+    <div id="chatBox" class="chat-box">
+      <div class="chat-message bot-message">👋 Welcome! Choose a subject above to explore historical quiz questions.</div>
+    </div>
+    <div class="category-buttons" id="suggestionButtons"></div>
+  </div>  <script>
+    const chatBox = document.getElementById("chatBox");
+    const suggestionBox = document.getElementById("suggestionButtons");
+
+    function appendUser(message) {
+      const div = document.createElement("div");
+      div.className = "chat-message user-message";
+      div.textContent = message;
+      chatBox.appendChild(div);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function appendBot(message) {
+      const div = document.createElement("div");
+      div.className = "chat-message bot-message";
+      div.textContent = message;
+      chatBox.appendChild(div);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    const topics = {
+      Math: [
+        ["Who introduced Algebra?", "Al-Khwarizmi, a Persian mathematician, is credited with introducing Algebra."],
+        ["What is the origin of Calculus?", "Calculus was developed independently by Newton and Leibniz in the 17th century."],
+        ["Who invented geometry?", "Euclid is known as the 'Father of Geometry'."],
+        ["When was the equal sign '=' first used?", "The '=' sign was first used in 1557 by Robert Recorde."],
+        ["Which civilization developed the concept of zero?", "The concept of zero was developed by ancient Indians."],
+        ["What is Pythagoras famous for?", "The Pythagorean Theorem: a² + b² = c²"],
+        ["What numeral system do we use today?", "We use the Hindu-Arabic numeral system."],
+        ["When was the decimal system introduced?", "In the 5th century by Indian mathematicians."],
+        ["Who was the first female mathematician?", "Hypatia of Alexandria is considered the first known female mathematician."],
+        ["Who proved Fermat's Last Theorem?", "Andrew Wiles proved it in 1994 after 350 years."],
+      ],
+      Physics: [
+        ["Who discovered gravity?", "Isaac Newton discovered gravity after observing a falling apple."],
+        ["Who developed the theory of relativity?", "Albert Einstein developed the theory of relativity in the early 1900s."],
+        ["What did Galileo discover?", "He discovered the laws of motion and improved the telescope."],
+        ["When was the first law of motion published?", "Newton's first law was published in 1687."],
+        ["Who invented the electric bulb?", "Thomas Edison is credited, though others contributed."],
+        ["When was electromagnetism unified?", "By James Clerk Maxwell in the 1860s."],
+        ["Who discovered the electron?", "J.J. Thomson in 1897."],
+        ["Who developed quantum mechanics?", "Planck, Heisenberg, and Schrödinger in the early 20th century."],
+        ["When was the periodic table formed?", "By Dmitri Mendeleev in 1869."],
+        ["Who proved the existence of atoms?", "John Dalton provided early atomic theory in 1803."],
+      ],
+      Life: [
+        ["Who discovered DNA structure?", "James Watson and Francis Crick in 1953."],
+        ["What did Darwin discover?", "The theory of natural selection and evolution."],
+        ["When was cell theory proposed?", "By Schleiden and Schwann in the 1830s."],
+        ["Who discovered vaccination?", "Edward Jenner in 1796 with smallpox."],
+        ["What is Mendel known for?", "Laws of inheritance using pea plants."],
+        ["When was the microscope invented?", "In the late 16th century by Zacharias Janssen."],
+        ["What is the human genome project?", "A 13-year effort to map all human DNA, completed in 2003."],
+        ["Who discovered penicillin?", "Alexander Fleming in 1928."],
+        ["What is photosynthesis?", "The process by which plants convert sunlight into energy."],
+        ["When was mitochondria discovered?", "First observed by Albert von Kölliker in 1857."],
+      ]
+    };
+
+    function loadCategory(subject) {
+      suggestionBox.innerHTML = "";
+      topics[subject].forEach(([q, a]) => {
+        const btn = document.createElement("button");
+        btn.className = "suggestion-button";
+        btn.textContent = q;
+        btn.onclick = () => {
+          appendUser(q);
+          setTimeout(() => appendBot(a), 700);
+        };
+        suggestionBox.appendChild(btn);
+      });
+    }
+  </script></body>
+</html>

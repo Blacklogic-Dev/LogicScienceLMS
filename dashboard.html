@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Futuristic Student Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #000428, #004e92);
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      text-align: center;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+    .student-info {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 1rem 0;
+      flex-wrap: wrap;
+    }
+    .student-info div {
+      background-color: #0f172a;
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #00e0ff;
+    }
+    .chart-container {
+      width: 90%;
+      max-width: 900px;
+      margin: 3rem auto;
+      background: rgba(255,255,255,0.05);
+      padding: 2rem;
+      border-radius: 15px;
+    }
+    .advice-box {
+      background-color: #1e293b;
+      margin: 2rem auto;
+      padding: 1.5rem;
+      border-left: 6px solid #00e0ff;
+      width: 90%;
+      max-width: 800px;
+      border-radius: 8px;
+    }
+    .advice-box h2 {
+      color: #00e0ff;
+    }
+        .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #0f172a;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 12px 0;
+      color: white;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    }
+
+    .bottom-nav a {
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: bold;
+    }
+        nav {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background-color: #0f172a;
+      color: white;
+      padding: 12px 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1><i class="fas fa-chart-line"></i> Student Performance Dashboard</h1>
+    <nav>
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="material.html"><i class="fas fa-book"></i> Material</a>
+        <a href="bot.html"><i class="fas fa-robot"></i> Chatbot</a>
+  
+  </nav>
+</header>
+
+  <section class="student-info">
+    <div><strong>Name:</strong> Mthokozisi</div>
+    <div><strong>Surname:</strong> Mathebula</div>
+    <div><strong>Grade:</strong> 12</div>
+  </section>
+
+  <section class="chart-container">
+    <canvas id="performanceChart"></canvas>
+  </section>
+
+  <section class="advice-box">
+    <h2>Personalized Advice:</h2>
+    <p>You're doing excellent in Life Sciences! To maintain your top performance, keep revising past papers. Physics needs a bit more focus—try breaking down complex concepts into visual representations. Math is improving steadily, keep practicing daily and you'll ace the final exam!</p>
+  </section>
+
+  <script>
+    const ctx = document.getElementById('performanceChart').getContext('2d');
+    const performanceChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Term 1', 'Term 2', 'Term 3', 'Term 4'],
+        datasets: [
+          {
+            label: 'Mathematics',
+            data: [60, 68, 75, 80],
+            borderColor: '#00e0ff',
+            backgroundColor: 'transparent',
+            tension: 0.3,
+          },
+          {
+            label: 'Physics',
+            data: [58, 64, 70, 72],
+            borderColor: '#ff6b6b',
+            backgroundColor: 'transparent',
+            tension: 0.3,
+          },
+          {
+            label: 'Life Sciences',
+            data: [75, 78, 85, 90],
+            borderColor: '#3cff00',
+            backgroundColor: 'transparent',
+            tension: 0.3,
+          },
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            labels: {
+              color: 'white'
+            }
+          },
+        },
+        scales: {
+          x: {
+            ticks: {
+              color: 'white'
+            }
+          },
+          y: {
+            ticks: {
+              color: 'white'
+            },
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+    <!-- Bottom Navigation -->
+  <nav class="bottom-nav">
+    <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+    <a href="dashboard.html"><i class="fas fa-chart-line"></i> Dashboard</a>
+    <a href="feedback.html"><i class="fas fa-comment-dots"></i> Feedback</a>
+  </nav>
+
+</body>
+</html>

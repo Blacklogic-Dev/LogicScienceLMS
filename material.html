@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Material | Logic Science Masterclass</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #000428, #004e92);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background-color: #0f172a;
+      color: white;
+      padding: 12px 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .grade-buttons {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .grade-buttons button {
+      padding: 10px 20px;
+      margin: 0 10px;
+      background-color: #0f172a;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .grade-buttons button.active,
+    .grade-buttons button:hover {
+      background-color: #22c55e;
+      color: black;
+    }
+
+    .subjects-container {
+      display: none;
+      padding: 0 16px 100px;
+    }
+
+    .subject-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .subject-card {
+      background-color: #0f172a;
+      color: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0, 224, 255, 0.3);
+    }
+
+    .subject-card img {
+      width: 100%;
+      max-width: 350px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .subject-card h3 {
+      margin: 10px 0;
+      color: #22c55e;
+    }
+
+    .subject-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 10px 0;
+    }
+
+    .subject-card ul li {
+      margin: 5px 0;
+    }
+
+    .subject-card a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 16px;
+      background-color: #22c55e;
+      color: #000;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #0f172a;
+      display: flex;
+      justify-content: space-around;
+      padding: 12px 0;
+    }
+
+    .bottom-nav a {
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Nav -->
+  <nav>
+    <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    <a href="material.html"><i class="fas fa-book"></i> Material</a>
+        <a href="bot.html"><i class="fas fa-robot"></i> Chatbot</a>
+  
+  </nav>
+
+  <!-- Grade Buttons -->
+  <div class="grade-buttons">
+    <button class="active" onclick="showGrade('grade10')">Grade 10</button>
+    <button onclick="showGrade('grade11')">Grade 11</button>
+    <button onclick="showGrade('grade12')">Grade 12</button>
+  </div>
+  
+<div class="subject-grid">
+  <!-- Mathematics Card -->
+  <div class="subject-card">
+    <img src="Grade10m.png" alt="Grade 10 Math" style="width: 250px;">
+    <h3>Mathematics</h3><h3>Grade :10</h3>
+    <ul>
+      <li>Algebra Basics</li>
+      <li>Linear Graphs</li>
+      <li>Geometry</li>
+    </ul>
+    <a href="grade10math.html">View Notes</a>
+  </div>
+
+  <!-- Physical Sciences Card -->
+  <div class="subject-card">
+    <img src="Grade10p.jpg" alt="Grade 10 Physics" style="width: 250px;">
+    <h3>Physical Sciences</h3><h3>Grade :10</h3>
+    <ul>
+      <li>States of Matter</li>
+      <li>Newton’s Laws</li>
+      <li>Simple Circuits</li>
+    </ul>
+    <a href="grade10p.html">View Notes</a>
+  </div>
+
+  <!-- Life Sciences Card -->
+  <div class="subject-card">
+    <img src="Grade10L.jpg" alt="Grade 10 Life Sciences" style="width: 250px;">
+    <h3>Life Sciences</h3><h3>Grade :10</h3>
+    <ul>
+      <li>Cells</li>
+      <li>Photosynthesis</li>
+      <li>Reproduction</li>
+    </ul>
+    <a href="grade10L.html">View Notes</a>
+  </div>
+</div>
+<!-- Grade 11 Subjects -->
+<div class="subject-grid">
+  <!-- Mathematics Card -->
+  <div class="subject-card">
+    <img src="Grade11m.jpg" alt="Grade 11 Math" style="width: 250px;">
+    <h3>Mathematics</h3><h3>Grade :11</h3>
+    <ul>
+      <li>Quadratic Equations</li>
+      <li>Functions and Graphs</li>
+      <li>Trigonometry</li>
+    </ul>
+    <a href="grade11m.html">View Notes</a>
+  </div>
+
+  <!-- Physical Sciences Card -->
+  <div class="subject-card">
+    <img src="Grade11p.jpg" alt="Grade 11 Physics" style="width: 250px;">
+    <h3>Physical Sciences</h3><h3>Grade :11</h3>
+    <ul>
+      <li>Kinematics</li>
+      <li>Work, Energy & Power</li>
+      <li>Electricity</li>
+    </ul>
+    <a href="grade11p.html">View Notes</a>
+  </div>
+
+  <!-- Life Sciences Card -->
+  <div class="subject-card">
+    <img src="Grade11L.jpg" alt="Grade 11 Life Sciences" style="width: 250px;">
+    <h3>Life Sciences</h3><h3>Grade :11</h3>
+    <ul>
+      <li>Genetics</li>
+      <li>Evolution</li>
+      <li>Human Anatomy</li>
+    </ul>
+    <a href="grade11L.html">View Notes</a>
+  </div>
+</div>
+
+<!-- Grade 12 Subjects -->
+<div class="subject-grid">
+  <!-- Mathematics Card -->
+  <div class="subject-card">
+    <img src="Grade12m.jpg" alt="Grade 12 Math" style="width: 250px;">
+    <h3>Mathematics</h3><h3>Grade :12</h3>
+    <ul>
+      <li>Calculus</li>
+      <li>Probability</li>
+      <li>Statistics</li>
+    </ul>
+    <a href="grade12m.html">View Notes</a>
+  </div>
+
+  <!-- Physical Sciences Card -->
+  <div class="subject-card">
+    <img src="Grade12p.jpg" alt="Grade 12 Physics" style="width: 250px;">
+    <h3>Physical Sciences</h3><h3>Grade :12</h3>
+    <ul>
+      <li>Electromagnetism</li>
+      <li>Waves & Optics</li>
+      <li>Nuclear Physics</li>
+    </ul>
+    <a href="grade12p.html">View Notes</a>
+  </div>
+
+  <!-- Life Sciences Card -->
+  <div class="subject-card">
+    <img src="Grade12L.jpg" alt="Grade 12 Life Sciences" style="width: 250px;">
+    <h3>Life Sciences</h3><h3>Grade :12</h3>
+    <ul>
+      <li>Ecology</li>
+      <li>Biotechnology</li>
+      <li>Human Physiology</li>
+    </ul>
+    <a href="grade12L.html">View Notes</a>
+  </div>
+</div>
+ 
+
+  <!-- JS Script -->
+<script>
+  function showGrade(id) {
+    document.querySelectorAll('.subjects-container').forEach(c => c.style.display = 'none');
+    document.getElementById(id).style.display = 'block';
+
+    document.querySelectorAll('.grade-buttons button').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+  }
+</script>
+
+</body>
+</html>
